@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const students = [
+        { name: 'Алексей', grade: 85, isActive: true },
+        { name: 'Мария', grade: 92, isActive: false },
+        { name: 'Иван', grade: 78, isActive: true },
+        { name: 'Ольга', grade: 95, isActive: true },
+        { name: 'Сергей', grade: 62, isActive: false },
+        { name: 'Анна', grade: 88, isActive: true },
+    ];
+
+    const studentNames = students.map(student => student.name);
+console.log(studentNames);
+
+    const activeStudents = students.filter(student => student.isActive);
+    console.log(activeStudents);
+
+    const topStudent = students.find(student => student.grade > 90);
+    console.log(topStudent);
+
+    students.forEach(student => {
+        console.log(`Студент ${student.name} имеет оценку ${student.grade}`);
+    });
+
+    const hasInactive = students.some(student => !student.isActive);
+    console.log(hasInactive);
+
+    const allActivePass = students.filter(student => student.isActive).every(student => student.grade > 70);
+    console.log(allActivePass);
+
+    const namesOfActiveStudents = students
+        .filter(student => student.isActive)
+        .map(student => student.name);
+    console.log(namesOfActiveStudents);
+
+    const numbers = [10, 20, 30, 40, 50];
+
+    const sum = numbers.reduce(function (currentSum, currentNumber) {
+        return currentSum + currentNumber
+    }, 0)
+
+    console.log("massive: " + numbers);
+    console.log("sum: " + sum);
+    const orders = [
+        { product: 'Книга', price: 350 },
+        { product: 'Флешка', price: 800 },
+        { product: 'Блокнот', price: 150 },];
+
+    const totalPrice= orders.reduce((sumOfPrices,order) => sumOfPrices + order.price, 0)
+    console.log("totalPrice: " + totalPrice);
+
+
+</script>
+</body>
+</html>
