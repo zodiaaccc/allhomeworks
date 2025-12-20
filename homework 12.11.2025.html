@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const string ='hello world ;)'
+function countSpaces(sentence) {
+    let count = 0
+    for (let i =0; i <sentence.length; i++) {
+        if(sentence[i] === ' ') {
+            count++
+        }
+    }
+    return count;
+}
+ console.log(countSpaces(string))
+
+    const findSubstringIndex = function (sentenceScndTsk, subSentenceScndTsk) {
+        return sentenceScndTsk.indexOf(subSentenceScndTsk)
+    }
+
+    const getWordsArray = (sentenceThirdTsk) => sentenceThirdTsk.split(' ')
+
+    const stringUtils = {
+        toCamelCase: (sentenceFourthTsk) => sentenceFourthTsk.toLowerCase().replaceAll(' ', '_'),
+
+        isLongerThan: (sentenceFourthTsk, length) => sentenceFourthTsk.length > length
+    }
+
+    const getLastWord = (sentenceFifthTsk) => {
+        let lastWord = ''
+
+
+        for (let i = sentenceFifthTsk.length - 1; i >= 0; i--) {
+
+            if (sentenceFifthTsk[i] === ' ' && lastWord !== '') {
+                break
+            }
+
+            if (sentenceFifthTsk[i] !== ' ') {
+                lastWord = sentenceFifthTsk[i] + lastWord
+            }
+        }
+
+        return lastWord.toUpperCase()
+    }
+
+    function* wordGenerator(sentenceSixthTsk) {
+        const words = sentenceSixthTsk.split(' ')
+
+        for (let i = 0; i < words.length; i++) {
+            yield words[i]
+        }
+    }
+    function capitalizeFirstLetters(sentenceSeventhTsk) {
+
+        const words = sentenceSeventhTsk.split(' ')
+
+
+        const capitalizedWords = words.map(word => {
+            if (word.length === 0) return ''; // Если слово пустое
+            return word[0].toUpperCase() + word.slice(1)
+        });
+
+
+        return capitalizedWords.join(' ')
+    }
+    const createUserTag = (firstName, lastName, yearOfBirth) => {
+        return `@${lastName.toLowerCase()}.${firstName[0].toLowerCase()}${yearOfBirth}`
+    }
+
+    function censorWord(sentenceNinthTsk, wordToCensor) {
+        // Создаем строку из звёздочек той же длины, что и слово
+        const stars = '*'.repeat(wordToCensor.length)
+
+        // Заменяем все вхождения слова на звёздочки
+        return sentenceNinthTsk.replaceAll(wordToCensor, stars)
+    }
+    function analyzeString(sentenceTenthTsk) {
+        return {
+            original: sentenceTenthTsk,
+            length: sentenceTenthTsk.length,
+            wordCount: sentenceTenthTsk.trim() === '' ? 0 : sentenceTenthTsk.trim().split(/\s+/).length,
+            uppercaseVariant: sentenceTenthTsk.toUpperCase(),
+            withoutSpaces: sentenceTenthTsk.replace(/\s+/g, '')
+        }
+    }
+</script>
+</body>
+</html>
