@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  function createUser(name, age, email) {
+    return {
+      name: name,
+      age: age,
+      email: email,
+
+      introduce() {
+        return `Меня зовут ${this.name}, мне ${this.age} лет`;
+      },
+
+      updateEmail(newEmail) {
+        this.email = newEmail;
+        return this.email;
+      }
+    };
+  }
+
+  const car = {
+    brand: "Toyota",
+    model: "Camry",
+    year: 2018
+  };
+
+  function addCarMethods(carObj) {
+    carObj.getAge = function() {
+      const currentYear = new Date().getFullYear();
+      return currentYear - this.year;
+    };
+
+    carObj.getInfo = function() {
+      return `${this.brand} ${this.model}, ${this.year} года выпуска`;
+    };
+
+    return carObj;
+  }
+
+  function processUsers(usersArray) {
+    const names = usersArray.map(user => user.name);
+    const totalCount = usersArray.length;
+    const adults = usersArray.filter(user => user.age >= 18);
+
+    return {
+      names: names,
+      totalCount: totalCount,
+      adults: adults
+    };
+  }
+
+  function mergeObjects(obj1, obj2) {
+    return {...obj1, ...obj2};
+  }
+
+  const products = [
+    {name: "Телефон", price: 500, category: "электроника"},
+    {name: "Футболка", price: 20, category: "одежда"},
+    {name: "Ноутбук", price: 1000, category: "электроника"},
+    {name: "Джинсы", price: 50, category: "одежда"}
+  ];
+
+  function filterByCategory(products, category) {
+    return products.filter(product => product.category === category);
+  }
+
+  function updateObjectProperty(obj, property, value) {
+    obj[property] = value;
+    return obj;
+  }
+
+  const students = [
+    {name: "Алексей", grade: 85, subject: "Математика"},
+    {name: "Елена", grade: 92, subject: "Физика"},
+    {name: "Сергей", grade: 78, subject: "Химия"}
+  ];
+
+  function findStudentByName(students, name) {
+    return students.find(student => student.name === name);
+  }
+
+  function getObjectStats(obj) {
+    const properties = Object.keys(obj);
+    const hasMethods = properties.some(prop => typeof obj[prop] === 'function');
+
+    return {
+      propertiesCount: properties.length,
+      propertiesList: properties,
+      hasMethods: hasMethods
+    };
+  }
+
+  function convertObjectToArray(obj) {
+    return Object.entries(obj);
+  }
+  const company = {
+    hr: {
+      employees: 5,
+      manager: "Anna",
+      employeesList: ["Иван", "Мария", "Петр"]
+    },
+    it: {
+      employees: 8,
+      manager: "Alex",
+      employeesList: ["Сергей", "Ольга", "Дмитрий"]
+    },
+    sales: {
+      employees: 12,
+      manager: "Екатерина",
+      employeesList: ["Андрей", "Татьяна", "Михаил"]
+    }
+  };
+
+  function getDepartmentInfo(company, departmentName) {
+    const department = company[departmentName];
+    if (!department) {
+      return "Отдел не найден";
+    }
+
+    return {
+      departmentName: departmentName,
+      ...department,
+      fullInfo: `Отдел: ${departmentName}, Менеджер: ${department.manager}, Сотрудников: ${department.employees}`
+    };
+  }
+</script>
+</body>
+</html>
